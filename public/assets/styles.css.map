@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/styles/styles.scss"],"names":[],"mappings":"AAAA;AACA,4DAA4D;AAC5D;AACA,0BAA0B;AAC1B;AACA,iBAAiB","file":"styles.css","sourcesContent":[".hello-world {\n  font: 14px 'Helvetica neue', Helvetica, Arial, sans-serif; }\n  .hello-world h1 {\n    color: cornflowerblue; }\n  .hello-world img {\n    width: 120px; }\n"],"sourceRoot":""}
