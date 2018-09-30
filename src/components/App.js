@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { hot } from 'react-hot-loader';
-import HelloWorld from './helloWorld/HelloWorld';
+import MainScreen from './mainScreen/MainScreen';
 
 class App extends Component{
 
     render(){
         return(
-             <HelloWorld message="Hello World !!!"/>
+             <MainScreen />
         );
     }
 } 

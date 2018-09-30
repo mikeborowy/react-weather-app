@@ -1,5 +1,5 @@
 {
-  "name": "weather app",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "small weather app written in react",
   "main": "index.js",
@@ -21,6 +21,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
