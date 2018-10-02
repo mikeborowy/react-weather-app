@@ -61,8 +61,10 @@ class MainScreen extends React.Component{
         tempMax: day.main.temp_max,
         tempMin: day.main.temp_min,
         icon: day.weather[0].icon,
-        iconDesc: day.weather[0].main
+        iconDesc: day.weather[0].main,
+        windSpd: day.wind.speed
       };
+      
       return <CurrentDayWeather {...currentDayProps}/>;
     }
   }
@@ -117,14 +119,10 @@ class MainScreen extends React.Component{
       <CssBaseline />
         <main className={classes.layout}>
           <Paper className={classes.paper}>
-            <Grid container justify="center">
-              <Grid item>
-                {this.renderCurrentDay()}
-              </Grid>
+              {this.renderCurrentDay()}
               <Grid container justify="center" className="week">
                 {this.renderDays()}
               </Grid>
-            </Grid>
           </Paper>
         </main>
       </React.Fragment>

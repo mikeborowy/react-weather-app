@@ -4,12 +4,12 @@ import {iconsGFX, infoIconsGFX} from '../../../assets/icons/icons';
 
 const propTypes = {
     dayHeader: PropTypes.string.isRequired,
-    dayProps: PropTypes.object.isRequired
+    dayProps: PropTypes.array.isRequired
 };
 
 const defaultProps = {
     dayHeader: '',
-    dayProps: {}
+    dayProps: []
 };
 
 const DayWeather = (props) => {
