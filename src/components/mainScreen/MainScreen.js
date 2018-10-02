@@ -15,6 +15,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import _ from 'lodash';
 //Config
 import {mdlStyles} from '../common/mdlSyles';
+import {daysOfWeek} from '../../cfg';
 //Components
 import CurrentDayWeather from './currentDayWeather/CurrentDayWeather';
 import DayWeather from './dayWeather/DayWeather';
@@ -42,6 +43,10 @@ class MainScreen extends React.Component{
     this.props.onGetWeatherAjax('warsaw','pl', 5);
   }
 
+  addZero(i) {
+    return i = i < 10 ? '0' + i: i;
+  }
+
   renderCurrentDay() {
     if(_.isEmpty(this.props.day) !== true)
     {
@@ -63,18 +68,48 @@ class MainScreen extends React.Component{
   }
 
   renderDays() {
-    return(
-      [0, 1, 2, 3, 4].map(value => (
-        <Grid key={value} item>
-          <DayWeather dayNum={value} />
-        </Grid>
-      ))
-    );
+    if(_.isEmpty(this.props.days) !== true)
+    {
+      const {
+        days:{
+          list
+        } 
+      } = this.props;
+
+      let prevTime = null;
+      let headers = [];
+      let hours = [];
+      let daysSeparatedArray = [];
+
+      list.map( day => {
+        const date = new Date(day.dt * 1000);
+        const currentTime = date.toLocaleDateString();
+        const hour = `${this.addZero(date.getHours())}:${this.addZero(date.getMinutes())}`;
+        day.fixedHour = hour;
+
+        if(currentTime !== prevTime){
+          headers.push(daysOfWeek[new Date(day.dt * 1000).getDay()]);
+          hours.push(hour);
+          daysSeparatedArray[daysSeparatedArray.length] = [];
+        }
+        daysSeparatedArray[daysSeparatedArray.length -1].push(day);
+        prevTime = currentTime;
+      });
+
+      return(
+        daysSeparatedArray.map( (day, id) => (
+          id > 0 
+          ? <Grid key={id} item>
+                <DayWeather dayHeader={headers[id]} dayHours={hours} dayProps={day}/> 
+            </Grid>
+          : null
+          ))
+      );
+    }
   }
 
   render() {
     const {classes} = this.props;
-
     return(
       <React.Fragment>
       <CssBaseline />

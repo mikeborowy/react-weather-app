@@ -3,8 +3,8 @@ export const mdlStyles = theme => ({
     layout: {
         width: 'auto',
         display: 'block', // Fix IE11 issue.
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-        width: 400,
+        [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+        width: 600,
         marginLeft: 'auto',
         marginRight: 'auto',
         },
@@ -17,7 +17,6 @@ export const mdlStyles = theme => ({
         padding: `${theme.spacing.unit * 2}px
                 ${theme.spacing.unit}px 
                 ${theme.spacing.unit * 2}px 
-                ${theme.spacing.unit}px`,
+                ${theme.spacing.unit}px`
     }
 });
-  

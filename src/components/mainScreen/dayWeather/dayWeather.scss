@@ -1,0 +1,11 @@
+.day-col{
+    padding: 0 10px 0 10px;
+    ul{
+        list-style-type: none;
+        padding: 0;
+
+        .day-row{
+            display: flex;
+        }
+    }
+}
