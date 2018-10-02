@@ -9,7 +9,6 @@ const open = require('open');
 const cors = require( 'cors');
 
 /* eslint-disable no-console */
-
 const port = 3000;
 const compiler = webpack(webpackConfig);
 const app = express();

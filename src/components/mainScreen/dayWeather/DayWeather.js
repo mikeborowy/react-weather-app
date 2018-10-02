@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DailyWeather = (props) => {
+const DayWeather = (props) => {
     return(
         <div>
             Day {props.dayNum} 
@@ -9,4 +9,4 @@ const DailyWeather = (props) => {
     );
 };
 
-export default DailyWeather;
+export default DayWeather;
