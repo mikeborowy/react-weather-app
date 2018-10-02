@@ -10,6 +10,8 @@ import tstorm3 from './tstorm3.png';
 import snow4 from './snow4.png';
 import fog from './fog.png';
 import fog_night from './fog_night.png';
+import temp from './temp.svg';
+import wind from './wind.svg';
 
 //https://openweathermap.org/weather-conditions
 export const iconsGFX = {
@@ -31,4 +33,9 @@ export const iconsGFX = {
     i_13n: snow4,
     i_50d: fog,
     i_50n: fog_night,
+};
+
+export const infoIconsGFX = {
+    temp,
+    wind
 };

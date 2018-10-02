@@ -1,5 +1,6 @@
 export const host = 'https://api.openweathermap.org/data/2.5/';
 export const APPID ='3da79bab253d46146f115cbe669dba51';
+export const units = 'metric';
 export const avaiableHours = [
     '2018-10-02 00:00:00',
     '2018-10-02 03:00:00',

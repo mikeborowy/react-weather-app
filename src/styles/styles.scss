@@ -1,1 +1,8 @@
-@import '../components/mainScreen/dayWeather/dayWeather.scss'; 
+@import './fonts.scss';
+@import './colors.scss';
+@import '../components/mainScreen/mainScreen.scss';
+@import '../components/mainScreen/dayWeather/dayWeather.scss';
+
+body{
+    font-family: 'Roboto', 'Roboto-Thin', Helvetica, sans-serif;
+}

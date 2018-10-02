@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {host,APPID} from '../../cfg';
+import {host,units,APPID} from '../../cfg';
 
 const types = {
     SET_SINGLE_DAY_WEATHER: 'SET_SINGLE_DAY_WEATHER',
@@ -18,7 +18,7 @@ export const onGetWeatherAjax = (city, cc, daysNum) => {
             }
         };
         const weathetType = daysNum === 1 ? 'weather' : 'forecast';
-        const url = `${host}/${weathetType}?q=${city},${cc}&appid=${APPID}`;
+        const url = `${host}/${weathetType}?q=${city},${cc}&units=${units}&appid=${APPID}`;
 
         return axios
                 .get(url, options)

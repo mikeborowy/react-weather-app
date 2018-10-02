@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {iconsGFX} from '../../../assets/icons/icons';
+import {iconsGFX, infoIconsGFX} from '../../../assets/icons/icons';
+
+const propTypes = {
+    dayHeader: PropTypes.string.isRequired,
+    dayProps: PropTypes.object.isRequired
+};
+
+const defaultProps = {
+    dayHeader: '',
+    dayProps: {}
+};
 
 const DayWeather = (props) => {
     const {dayHeader, dayProps} = props;
@@ -10,7 +20,7 @@ const DayWeather = (props) => {
     }
 
     return(
-        <div className='day-col'>
+        <div className="day-col">
             <h4>{dayHeader}</h4>
             <ul>
                 {dayProps.map( (dayProp, id) => {
@@ -21,11 +31,17 @@ const DayWeather = (props) => {
                     const wind = dayProp.wind.speed;
 
                     return (
-                        <li key={id} className='day-row'>
-                            <div className='day-data'>
-                                <div className='day-data-time'>{time}</div>
-                                <div className='day-data-temp'>{temp}</div>
-                                <div className='day-data-wind'>{wind}</div>
+                        <li key={id} className="day-row">
+                            <div className="day-data">
+                                <div className="day-data-time">{time}</div>
+                                <div className="day-data-temp">
+                                    <img src={infoIconsGFX.temp} width={14} height={14}/>
+                                    <span>{temp} °C</span>
+                                </div>
+                                <div className="day-data-wind">
+                                    <img src={infoIconsGFX.wind} width={14} height={14}/>
+                                    <span>{wind} km\h</span>
+                                </div>
                             </div>
                             <img src={iconsGFX[`i_${icon}`]} width={40} height={40}/>
                         </li>
@@ -35,5 +51,8 @@ const DayWeather = (props) => {
         </div>
     );
 };
+
+DayWeather.propTypes = propTypes;
+DayWeather.defaultProps = defaultProps;
 
 export default DayWeather;

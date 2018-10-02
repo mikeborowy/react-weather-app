@@ -1,10 +1,9 @@
-
 export const mdlStyles = theme => ({
     layout: {
         width: 'auto',
         display: 'block', // Fix IE11 issue.
-        [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
-        width: 600,
+        [theme.breakpoints.up(880 + theme.spacing.unit * 3 * 2)]: {
+        width: 880,
         marginLeft: 'auto',
         marginRight: 'auto',
         },

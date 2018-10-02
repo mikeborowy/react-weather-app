@@ -84,12 +84,14 @@ class MainScreen extends React.Component{
       list.map( day => {
         const date = new Date(day.dt * 1000);
         const currentTime = date.toLocaleDateString();
-        const hour = `${this.addZero(date.getHours())}:${this.addZero(date.getMinutes())}`;
-        day.fixedHour = hour;
+        day.fixedHour = `${this.addZero(date.getHours())}:${this.addZero(date.getMinutes())}`;
+
+        if(!hours.includes(date.toLocaleTimeString())){
+          hours.push(date.toLocaleTimeString());
+        }
 
         if(currentTime !== prevTime){
           headers.push(daysOfWeek[new Date(day.dt * 1000).getDay()]);
-          hours.push(hour);
           daysSeparatedArray[daysSeparatedArray.length] = [];
         }
         daysSeparatedArray[daysSeparatedArray.length -1].push(day);
@@ -99,8 +101,8 @@ class MainScreen extends React.Component{
       return(
         daysSeparatedArray.map( (day, id) => (
           id > 0 
-          ? <Grid key={id} item>
-                <DayWeather dayHeader={headers[id]} dayHours={hours} dayProps={day}/> 
+          ? <Grid key={id} item className="week-item">
+                <DayWeather dayId={id} dayHeader={headers[id]} dayHours={hours[id]} dayProps={day}/> 
             </Grid>
           : null
           ))
@@ -119,7 +121,7 @@ class MainScreen extends React.Component{
               <Grid item>
                 {this.renderCurrentDay()}
               </Grid>
-              <Grid container justify="center">
+              <Grid container justify="center" className="week">
                 {this.renderDays()}
               </Grid>
             </Grid>
