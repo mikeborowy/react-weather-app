@@ -43,7 +43,7 @@ const DayWeather = (props) => {
                                     <span>{wind} km\h</span>
                                 </div>
                             </div>
-                            <img src={iconsGFX[`i_${icon}`]} width={40} height={40}/>
+                            <img src={iconsGFX[`i_${icon}`]} className={`icon-${icon}`} width={40} height={40}/>
                         </li>
                     );
                 })}

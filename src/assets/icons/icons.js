@@ -6,6 +6,7 @@ import cloudy5 from './cloudy5.png';
 import overcast from './overcast.png';
 import shower3 from './shower3.png';
 import shower2 from './shower2.png';
+import shower2_night from './shower2_night.png';
 import tstorm3 from './tstorm3.png';
 import snow4 from './snow4.png';
 import fog from './fog.png';
@@ -26,7 +27,7 @@ export const iconsGFX = {
     i_09d: shower3,
     i_09n: shower3,
     i_10d: shower2,
-    i_10n: shower2,
+    i_10n: shower2_night,
     i_11d: tstorm3,
     i_11n: tstorm3,
     i_13d: snow4,
