@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 //Store
+import {
+  onLoadingStart,
+  onLoadingEnd
+} from '../../store/reducers/preloader';
 import {onGetWeatherAjax} from '../../store/reducers/weather';
 //MDL
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,6 +21,7 @@ import _ from 'lodash';
 import {mdlStyles} from '../common/mdlSyles';
 import {daysOfWeek} from '../../cfg';
 //Components
+import Preloader from '../preloader/Preloader';
 import CurrentDayWeather from './currentDayWeather/CurrentDayWeather';
 import DayWeather from './dayWeather/DayWeather';
 
@@ -39,12 +44,23 @@ class MainScreen extends React.Component{
   }
 
   componentDidMount() {
-    this.props.onGetWeatherAjax('warsaw','pl', 1);
-    this.props.onGetWeatherAjax('warsaw','pl', 5);
+    this.props.onLoadingStart();
+    Promise.all([
+      this.props.onGetWeatherAjax('warsaw','pl', 1),
+      this.props.onGetWeatherAjax('warsaw','pl', 5)
+    ]).then( () => {
+      this.props.onLoadingEnd();
+    });
   }
 
   addZero(i) {
     return i = i < 10 ? '0' + i: i;
+  }
+
+  renderPreloader() {
+    return this.props.loaders > 0 
+            ? <Preloader data={this.props.preloader}/>
+            : null;
   }
 
   renderCurrentDay() {
@@ -114,11 +130,13 @@ class MainScreen extends React.Component{
 
   render() {
     const {classes} = this.props;
+
     return(
       <React.Fragment>
       <CssBaseline />
         <main className={classes.layout}>
-          <Paper className={classes.paper}>
+          <Paper className={`${classes.paper} height-animation`}>
+              {this.renderPreloader()}
               {this.renderCurrentDay()}
               <Grid container justify="center" className="week">
                 {this.renderDays()}
@@ -138,13 +156,16 @@ const MainScreenWithMDL = withStyles(mdlStyles)(MainScreen);
 function mapStateToProps(state) {
   return {
     day: state.weather.day,
-    days: state.weather.days
+    days: state.weather.days,
+    loaders: state.preloader.loaders
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return Redux.bindActionCreators({   
-    onGetWeatherAjax
+    onGetWeatherAjax,
+    onLoadingStart,
+    onLoadingEnd
   }, dispatch);
 }
 
