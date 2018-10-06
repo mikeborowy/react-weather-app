@@ -1,7 +1,17 @@
 const webpack = require("webpack");
 const path = require("path");
+const flexBugs = require('postcss-flexbugs-fixes');
+const autoprefixer = require('autoprefixer')({
+	browsers: [
+		'>1%',
+		'last 4 versions',
+		'Firefox ESR',
+		'not ie < 9', // React doesn't support IE8 anyway
+	],
+	flexbox: 'no-2009',
+});
+
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const autoprefixer = require('autoprefixer');
 
 module.exports = {
 	mode: 'development',//'production' | 'development' | 'none'
@@ -67,31 +77,19 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: [
-					require.resolve('style-loader'),
 					{
-					loader: require.resolve('css-loader'),
-					options: {
-						importLoaders: 1,
-					},
-					},
-					{
-					loader: require.resolve('postcss-loader'),
-					options: {
-						ident: 'postcss',
-						plugins: () => [
-						require('postcss-flexbugs-fixes'),
-						autoprefixer({
-							browsers: [
-							'>1%',
-							'last 4 versions',
-							'Firefox ESR',
-							'not ie < 9', // React doesn't support IE8 anyway
-							],
-							flexbox: 'no-2009',
-						}),
-						],
-					},
-					},
+						loader: require.resolve('css-loader'),
+							options: {
+								importLoaders: 1,
+							},
+						},
+						{
+							loader: require.resolve('postcss-loader'),
+							options: {
+								ident: 'postcss',
+								plugins: () => [flexBugs,autoprefixer],
+						},
+					}
 				],
 			},
 			{
@@ -104,11 +102,11 @@ module.exports = {
 			},
 			{
 				test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
-				loader: "url-loader?limit=10000&mimetype=application/font-woff"
+				loader: "file-loader?limit=10000&mimetype=application/font-woff"
 			},
 			{
 				test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-				loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+				loader: "file-loader?limit=10000&mimetype=application/octet-stream"
 			},
 			{
 				test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -116,7 +114,7 @@ module.exports = {
 			},
 			{
 				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-				loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+				loader: "file-loader?limit=10000&mimetype=image/svg+xml"
 			},
 			//Images
 			{

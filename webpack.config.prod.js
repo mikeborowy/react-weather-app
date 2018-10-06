@@ -1,9 +1,11 @@
 const webpack = require('webpack');
 const path = require("path");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const autoprefixer = require('autoprefixer');
+const precss = require('precss');
+//Plugins
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production')
@@ -46,8 +48,9 @@ module.exports = {
 	plugins: [
 		new webpack.DefinePlugin(GLOBALS),//defines vars avaialble to livraries
 		new webpack.optimize.OccurrenceOrderPlugin(), //optimizes the order files are bundled
-		new MiniCssExtractPlugin({
-			filename: 'styles.css'
+		new ExtractTextPlugin({
+			filename: 'styles.css', 
+			allChunks: true
 		})
 	],
 	node:{
@@ -69,24 +72,47 @@ module.exports = {
 			{ test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery'},
 			// CSS Definitions
 			{
-				test: /\.s?[ac]ss$/,
-				use: [
-                    MiniCssExtractPlugin.loader,
-                    { loader: 'css-loader', options: { url: false, sourceMap: false } },
-                    { loader: 'sass-loader', options: { sourceMap: false } }
-                ],
+				test: /\.(css|scss)$/,
+				use: ExtractTextPlugin.extract({
+					use: [
+						{
+							loader: 'css-loader', // translates CSS into CommonJS modules
+						}, 
+						{
+							loader: 'postcss-loader', // Run post css actions
+							options: {
+								plugins: () => [precss, autoprefixer] // post css plugins, can be exported to postcss.config.js
+							}
+						}, 
+						{
+							loader: 'sass-loader' // compiles SASS to CSS
+						}
+					]
+				})
 			},
 			// Font Definitions
-			{ test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,  loader: 'file-loader?limit=10000&mimetype=application/font-woff&name=/fonts/[name].[ext]' },
-			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 		loader: 'file-loader?limit=10000&mimetype=application/vnd.ms-fontobject&name=/fonts/[name].[ext]' },
-			{ test: /\.[ot]tf(\?v=\d+\.\d+\.\d+)?$/, 	loader: 'file-loader?limit=10000&mimetype=application/octet-stream&name=/fonts/[name].[ext]' },
-			//svg
-			{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 		loader: 'file-loader?limit=10000&mimetype=image/svg+xml&name=/svg/[name].[ext]' },
+			{ 
+				test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,  
+				use: ['file-loader?limit=10000&name=/fonts/[name].[ext]'] 
+			},
+			{ 
+				test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 		
+				use: ['file-loader?limit=10000&name=/fonts/[name].[ext]'] 
+			},
+			{ 
+				test: /\.[ot]tf(\?v=\d+\.\d+\.\d+)?$/, 
+				use: ['file-loader?limit=10000&name=/fonts/[name].[ext]'] 
+			},
+			//Svg
+			{ 
+				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 		
+				use: ['file-loader?limit=10000&name=/fonts/[name].[ext]'] 
+			},
 			// Images
 			{
 				test: /\.(jpg|jpeg|gif|png)$/,
 				exclude: /(node_modules)/,
-				loader: "file-loader?name=/images/[name].[ext]"
+				use: ["file-loader?name=/images/[name].[ext]"]
 			}
 		]
 	}

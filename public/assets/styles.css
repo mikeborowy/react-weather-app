@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Roboto-Thin';
-  src: url("../assets/fonts/Roboto-Thin.eot");
-  src: url("../assets/fonts/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Roboto-Thin.woff2") format("woff2"), url("../assets/fonts/Roboto-Thin.woff") format("woff"), url("../assets/fonts/Roboto-Thin.ttf") format("truetype"), url("../assets/fonts/Roboto-Thin.svg#Roboto") format("svg"); }
+  src: url(/assets/fonts/Roboto-Thin.eot);
+  src: url(/assets/fonts/Roboto-Thin.eot?#iefix) format("embedded-opentype"), url(/assets/fonts/Roboto-Thin.woff2) format("woff2"), url(/assets/fonts/Roboto-Thin.woff) format("woff"), url(/assets/fonts/Roboto-Thin.ttf) format("truetype"), url(/assets/fonts/Roboto-Thin.svg#Roboto) format("svg"); }
 
 @font-face {
   font-family: 'Roboto';
-  src: url("../assets/fonts/Roboto-Regular.eot");
-  src: url("../assets/fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Roboto-Regular.woff2") format("woff2"), url("../assets/fonts/Roboto-Regular.woff") format("woff"), url("../assets/fonts/Roboto-Regular.ttf") format("truetype"), url("../assets/fonts/Roboto-Regular.svg#Roboto") format("svg");
+  src: url(/assets/fonts/Roboto-Regular.eot);
+  src: url(/assets/fonts/Roboto-Regular.eot) format("embedded-opentype"), url(/assets/fonts/Roboto-Regular.woff2) format("woff2"), url(/assets/fonts/Roboto-Regular.woff) format("woff"), url(/assets/fonts/Roboto-Regular.ttf) format("truetype"), url(/assets/fonts/Roboto-Regular.svg#Roboto) format("svg");
   font-weight: 400;
   font-style: normal; }
 
@@ -14,17 +14,21 @@
   padding-left: 20px; }
 
 .current-date {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center; }
   .current-date h1,
   .current-date h2,
   .current-date h3,
   .current-date h4,
   .current-date h5 {
-    margin-block-start: 0;
-    margin-block-end: 0; }
+    margin-top: 0;
+    margin-bottom: 0; }
   .current-date .current-date-header,
   .current-date .current-date-temp,
   .current-date .current-date-wind {
@@ -51,6 +55,7 @@
     list-style-type: none;
     padding: 0; }
     .week-item .day-col ul .day-row {
+      display: -ms-flexbox;
       display: flex;
       padding: 2px 0; }
       .week-item .day-col ul .day-row .day-data {
@@ -110,7 +115,6 @@
       display: inline-block !important; } }
 
 body {
-  font-family: 'Roboto', 'Roboto-Thin', Helvetica, sans-serif; }
-
+  font-family: 'Roboto'; }
 
 /*# sourceMappingURL=styles.css.map*/
