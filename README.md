@@ -31,6 +31,5 @@ Also I didn't menage to implement city search.
 2. Click at day to preview it in CurrentDayWeather component.
 3. More details to view in CurrentDayWeather component.
 4. Buttons to scroll days forward, backward.
-5. Background change color related to current time.
-6. City search bar.
-7. Celsius / fahrenheit switch button.
+5. City search bar.
+6. Celsius / fahrenheit switch button.
