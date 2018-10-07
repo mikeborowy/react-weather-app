@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {iconsGFX, infoIconsGFX} from '../../../assets/icons/icons';
+import DayWeatherItem from './DayWeatherItem';
 
 const propTypes = {
     dayHeader: PropTypes.string.isRequired,
@@ -12,13 +12,7 @@ const defaultProps = {
     dayProps: []
 };
 
-const DayWeather = (props) => {
-    const {dayHeader, dayProps} = props;
-
-    function addZero(i) {
-        return i = i < 10 ? '0' + i: i;
-    }
-
+const DayWeather = ({dayHeader, dayProps}) => {
     return(
         <div className="day-col">
             <h4>{dayHeader}</h4>
@@ -26,25 +20,19 @@ const DayWeather = (props) => {
                 {dayProps.map( (dayProp, id) => {
                     const time = dayProp.fixedHour;
                     const weather = {...dayProp.weather[0]};
-                    const {icon} = weather;
-                    const {temp} = dayProp.main;
+                    const {icon} = weather.icon;
+                    const {temp} = dayProp.main.temp;
                     const wind = dayProp.wind.speed;
 
                     return (
-                        <li key={id} className="day-row">
-                            <div className="day-data">
-                                <div className="day-data-time">{time}</div>
-                                <div className="day-data-temp">
-                                    <img src={infoIconsGFX.temp} width={14} height={14}/>
-                                    <span>{temp} °C</span>
-                                </div>
-                                <div className="day-data-wind">
-                                    <img src={infoIconsGFX.wind} width={14} height={14}/>
-                                    <span>{wind} km\h</span>
-                                </div>
-                            </div>
-                            <img src={iconsGFX[`i_${icon}`]} className={`icon-${icon}`} width={40} height={40}/>
-                        </li>
+                    <DayWeatherItem 
+                        key={id} 
+                        time={time} 
+                        weather={weather} 
+                        icon={icon} 
+                        temp={temp} 
+                        wind={wind} 
+                    />
                     );
                 })}
             </ul>
