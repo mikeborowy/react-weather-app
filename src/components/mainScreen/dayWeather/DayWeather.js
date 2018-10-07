@@ -19,20 +19,15 @@ const DayWeather = ({dayHeader, dayProps}) => {
             <ul>
                 {dayProps.map( (dayProp, id) => {
                     const time = dayProp.fixedHour;
-                    const weather = {...dayProp.weather[0]};
-                    const {icon} = weather.icon;
                     const {temp} = dayProp.main.temp;
+                    const weather = {...dayProp.weather[0]};
+                    const {icon} = weather;
                     const wind = dayProp.wind.speed;
 
+                    const props = {time, temp, weather, icon, wind};
+
                     return (
-                    <DayWeatherItem 
-                        key={id} 
-                        time={time} 
-                        weather={weather} 
-                        icon={icon} 
-                        temp={temp} 
-                        wind={wind} 
-                    />
+                        <DayWeatherItem key={id} {...props}/>
                     );
                 })}
             </ul>

@@ -28,11 +28,9 @@ Also I didn't menage to implement city search.
 # anything you might implement with more time (features, fixes, technical debt corrections etc).
 
 1. Unit test.
-2. Further file size optimization.
-3. Preloader.
-4. Click at day to preview it in CurrentDayWeather component.
-5. More details to view in CurrentDayWeather component.
-6. Buttons to scroll days forward, backward.
-7. Background cahnge color related to current time.
-8. City search bar.
-8. Celsius / fahrenheit switch button.
+2. Click at day to preview it in CurrentDayWeather component.
+3. More details to view in CurrentDayWeather component.
+4. Buttons to scroll days forward, backward.
+5. Background change color related to current time.
+6. City search bar.
+7. Celsius / fahrenheit switch button.

@@ -1,18 +1,20 @@
-import sunny from './sunny.png';
-import sunny_night from './sunny_night.png';
-import cloudy2 from './cloudy2.png';
-import cloudy2_night from './cloudy2_night.png';
-import cloudy5 from './cloudy5.png';
-import overcast from './overcast.png';
-import shower3 from './shower3.png';
-import shower2 from './shower2.png';
-import shower2_night from './shower2_night.png';
-import tstorm3 from './tstorm3.png';
-import snow4 from './snow4.png';
-import fog from './fog.png';
-import fog_night from './fog_night.png';
-import temp from './temp.svg';
-import wind from './wind.svg';
+import sunny from './day/sunny.png';
+import sunny_night from './night/sunny_night.png';
+import cloudy2 from './day/cloudy2.png';
+import cloudy2_night from './night/cloudy2_night.png';
+import cloudy5 from './day/cloudy5.png';
+import overcast from './day/overcast.png';
+import shower3 from './day/shower3.png';
+import shower2 from './day/shower2.png';
+import shower2_night from './night/shower2_night.png';
+import tstorm3 from './day/tstorm3.png';
+import snow4 from './day/snow4.png';
+import fog from './day/fog.png';
+import fog_night from './night/fog_night.png';
+import temp from './day/temp.svg';
+import wind from './day/wind.svg';
+import tempNight from './night/temp_night.svg';
+import windNight from './night/wind_night.svg';
 
 //https://openweathermap.org/weather-conditions
 export const iconsGFX = {
@@ -36,7 +38,10 @@ export const iconsGFX = {
     i_50n: fog_night,
 };
 
+//Quick fix
+const hours = new Date().getHours();
+
 export const infoIconsGFX = {
-    temp,
-    wind
+    temp: hours > 6 && hours < 20 ? temp : tempNight,
+    wind: hours > 6 && hours < 20 ? wind : windNight
 };

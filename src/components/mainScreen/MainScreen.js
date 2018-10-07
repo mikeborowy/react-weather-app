@@ -129,13 +129,22 @@ class MainScreen extends React.Component{
   }
 
   render() {
-    const {classes} = this.props;
+    const {
+      classes:{
+        base,
+        layout,
+        paper,
+        paperAtNight
+      }
+    } = this.props;
+
+    const hours = new Date().getHours();
+    const theme = hours > 6 && hours < 20 ? paper : paperAtNight;
 
     return(
       <React.Fragment>
-      <CssBaseline />
-        <main className={classes.layout}>
-          <Paper className={`${classes.paper} height-animation`}>
+        <main className={layout}>
+          <Paper className={`${theme}`}>
               {this.renderPreloader()}
               {this.renderCurrentDay()}
               <Grid container justify="center" className="week">

@@ -115,6 +115,7 @@
       display: inline-block !important; } }
 
 body {
-  font-family: 'Roboto'; }
+  font-family: 'Roboto';
+  background-color: #7a7a7a; }
 
 /*# sourceMappingURL=styles.css.map*/
