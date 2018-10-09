@@ -32,7 +32,7 @@ const defaultProps = {
     windSpd: 0
 };
 
-const CurrentDayWeatherProps = (props) => {
+const CurrentDayWeather = (props) => {
     const date = new Date(props.date * 1000);
     const dayName = daysOfWeek[date.getDay()]; 
     const timeArr = date.toDateString().split(' '); 
@@ -71,7 +71,7 @@ const CurrentDayWeatherProps = (props) => {
     );
 };
 
-CurrentDayWeatherProps.propTypes = propTypes;
-CurrentDayWeatherProps.defaultProps = defaultProps;
+CurrentDayWeather.propTypes = propTypes;
+CurrentDayWeather.defaultProps = defaultProps;
 
-export default CurrentDayWeatherProps;
+export default CurrentDayWeather;
