@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import {LazyLoadImage} from 'react-lazy-load-image-component';
 import {iconsGFX, infoIconsGFX} from '../../../assets/icons/icons';
 import {daysOfWeek} from '../../../cfg';
 
@@ -65,7 +66,7 @@ const CurrentDayWeather = (props) => {
                 </h3>
             </Grid>
             <Grid item>
-                <img src={iconsGFX[`i_${props.icon}`]}/>
+                <LazyLoadImage alt={props.icon} src={iconsGFX[`i_${props.icon}`]} />
             </Grid>
         </Grid>
     );
