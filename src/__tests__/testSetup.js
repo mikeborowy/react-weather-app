@@ -1,3 +1,4 @@
+
 // Tests are placed alongside files under test.
 // This file does the following:
 // 1. Registers babel for transpiling our code for testing
@@ -14,17 +15,20 @@ process.env.NODE_ENV = 'test';
 // Register babel so that it will transpile ES6 to ES5
 // before our tests run.
 require('babel-register')();
-
+const Enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
+Enzyme.configure({adapter: new Adapter()});
 // Disable webpack-specific features for tests since
 // Mocha doesn't know what to do with them.
 require.extensions['.css'] = function () {return null;};
 require.extensions['.png'] = function () {return null;};
 require.extensions['.jpg'] = function () {return null;};
+require.extensions['.svg'] = function () {return null;};
 
 // Configure JSDOM and set global variables
 // to simulate a browser environment for tests.
-var exposedProperties = ['window', 'navigator', 'document'];
-var jsdom = require('jsdom');
+const exposedProperties = ['window', 'navigator', 'document'];
+const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const { document } = (new JSDOM(``, {
   url: "http://localhost:3000/",

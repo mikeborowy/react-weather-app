@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 import MainScreen from './mainScreen/MainScreen';
 
-class App extends Component{
-
-    render(){
-        return(
-             <MainScreen />
-        );
-    }
-} 
+const App = () => {
+    return(
+        <MainScreen />
+    );
+}; 
 
 export default hot(module)(App);

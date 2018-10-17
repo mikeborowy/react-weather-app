@@ -8,8 +8,8 @@ import * as ReactRedux from 'react-redux';
 import {
   onLoadingStart,
   onLoadingEnd
-} from '../../store/reducers/preloader';
-import {onGetWeatherAjax} from '../../store/reducers/weather';
+} from '../../reducers/preloader';
+import {onGetWeatherAjax} from '../../reducers/weather';
 //MDL
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';

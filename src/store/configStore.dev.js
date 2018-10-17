@@ -1,5 +1,6 @@
 /*eslint-disable no-alert, no-console */
 import { createStore, applyMiddleware, compose } from 'redux';
+import reduxPromise from 'redux-promise';
 import thunk from 'redux-thunk';
 import rootReducers from '../reducers';
 
@@ -7,7 +8,11 @@ export default function initStore() {
     return createStore(
         rootReducers, 
         compose(
-            applyMiddleware(thunk, consoleMessages),
+            applyMiddleware(
+                thunk, 
+                reduxPromise, 
+                consoleMessages
+            ),
             window.devToolsExtension ? window.devToolsExtension() : f => f
         )
     );
