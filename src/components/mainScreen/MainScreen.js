@@ -47,8 +47,12 @@ class MainScreen extends React.PureComponent{
     Promise.all([
       this.props.onGetWeatherAjax('warsaw','pl', 1),
       this.props.onGetWeatherAjax('warsaw','pl', 5)
-    ]).then( () => {
+    ])
+    .then( () => {
       this.props.onLoadingEnd();
+    })
+    .catch( (error) => {
+      alert(error);
     });
   }
 

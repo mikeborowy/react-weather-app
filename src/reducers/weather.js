@@ -29,7 +29,7 @@ export const onGetWeatherAjax = (city, cc, daysNum) => {
                     : dispatch(onSetMoreDaysWeather(response.data));
                 })
                 .catch(error => {
-                    return error;
+                    return Promise.reject(error);
                 });
     };
 };
