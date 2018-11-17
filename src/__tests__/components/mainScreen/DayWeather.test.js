@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import {mount} from 'enzyme';
 import {daysData} from '../../testData';
-import Root from '../../../Root';
+import Root from '../../../store';
 import DayWeather from '../../../components/mainScreen/dayWeather/DayWeather';
 import DayWeatherItem from '../../../components/mainScreen/dayWeather/DayWeatherItem';
 

@@ -6,7 +6,7 @@ import './styles/styles.scss';
 //3rd party libs
 import 'babel-polyfill';
 //Compnents
-import Root from './Root';
+import Root from './store';
 import App from './components/App';
 
 ReactDOM.render(

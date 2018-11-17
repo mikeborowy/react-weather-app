@@ -27,6 +27,9 @@ export const onGetWeatherAjax = (city, cc, daysNum) => {
                     daysNum === 1 
                     ? dispatch(onSetSingleDayWeather(response.data))
                     : dispatch(onSetMoreDaysWeather(response.data));
+                })
+                .catch(error => {
+                    return error;
                 });
     };
 };

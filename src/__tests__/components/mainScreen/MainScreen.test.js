@@ -3,7 +3,7 @@ import expect from 'expect';
 import moxios from 'moxios';
 import {mount} from 'enzyme';
 import {dayData, daysData} from '../../testData';
-import Root from '../../../Root';
+import Root from '../../../store';
 import App from '../../../components/App';
 import MainScreen from '../../../components/mainScreen/MainScreen';
 import CurrentDayWeather from '../../../components/mainScreen/currentDayWeather/CurrentDayWeather';

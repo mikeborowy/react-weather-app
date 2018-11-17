@@ -14,9 +14,12 @@ const GLOBALS = {
 module.exports = {
 	mode: 'production',//'production' | 'development' | 'none'
 	devtool: 'source-map',
-	entry: {
-		app: './src/index.js'
-	},
+	entry: [
+		'babel-polyfill',		
+		{
+			app: './src/index.js'
+		}
+	],
 	target: 'web',
 	output: {
 		path: __dirname + "/public/assets",

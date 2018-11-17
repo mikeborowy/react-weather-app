@@ -11,7 +11,6 @@ import {
 } from '../../reducers/preloader';
 import {onGetWeatherAjax} from '../../reducers/weather';
 //MDL
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -37,7 +36,7 @@ const defaultProps = {
   days: {}
 };
 
-class MainScreen extends React.Component{
+class MainScreen extends React.PureComponent{
 
   constructor(props) {
     super(props);

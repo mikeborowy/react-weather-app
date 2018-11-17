@@ -17,6 +17,7 @@ module.exports = {
 	mode: 'development',//'production' | 'development' | 'none'
 	devtool: 'source-map',
 	entry: [
+		'babel-polyfill',
 		'webpack-hot-middleware/client',
 		path.join( __dirname, '/src/index.js')
 	],
